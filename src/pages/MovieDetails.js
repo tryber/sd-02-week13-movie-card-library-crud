@@ -42,6 +42,7 @@ class MovieDetails extends Component {
             </div>
             <div className="card-action">
               <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+              <Link to="/">VOLTAR</Link>
             </div>
           </div>
         </div>
