@@ -1,14 +1,37 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    if (true) return <Loading />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: {},
+      carregando: true,
+    };
+  }
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    console.log(id);
+    movieAPI.getMovie(id)
+      .then((filme) => {
+        this.setState({
+          movie: filme,
+          carregando: false,
+        });
+      });
+  }
+
+  render() {
+    const { carregando, movie } = this.state;
+    if (carregando) return <Loading />;
+
+    const {
+      title, storyline, imagePath, genre, rating, subtitle, id,
+    } = movie;
 
     return (
       <div className="row">
@@ -25,6 +48,8 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
+              <Link to={`/movies/${id}/edit`}>Editar</Link>
+              <Link to="/">Voltar</Link>
             </div>
           </div>
         </div>
