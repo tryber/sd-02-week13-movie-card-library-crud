@@ -6,14 +6,21 @@ import * as movieAPI from '../services/movieAPI';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = { movie: [], status: 'loading', shouldRedirect: false };
+    this.state = {
+      status: 'loading',
+      shouldRedirect: false,
+      movie: '',
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
     movieAPI.getMovie(id)
-      .then((response) => this.setState({ movie: response, status: 'noLoading' }));
+      .then((data) => this.setState({
+        movie: data,
+        status: 'notLoading',
+      }));
   }
 
   handleSubmit(updatedMovie) {
@@ -28,7 +35,9 @@ class EditMovie extends Component {
       history.push('/');
     }
 
-    if (status === 'loading') return <Loading />;
+    if (status === 'loading') {
+      return <Loading />;
+    }
 
     return (
       <MovieForm movie={movie} onSubmit={this.handleSubmit} />
