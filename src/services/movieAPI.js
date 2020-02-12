@@ -32,6 +32,7 @@ export const updateMovie = (updatedMovie) => {
     }
     return movie;
   });
+
   saveMovies(movies);
 
   return new Promise((resolve) => {
