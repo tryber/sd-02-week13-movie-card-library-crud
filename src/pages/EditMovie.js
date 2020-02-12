@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 
-import { MovieForm } from '../components';
+import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { status: 'loading' };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(updatedMovie) {
+  }
+
+  componentDidMount() {
+    movieAPI.getMovie(this.props.match.params.id)
+      .then((data) => this.setState({ movie: data, status: 'success' }));
   }
 
   render() {
@@ -20,7 +25,9 @@ class EditMovie extends Component {
     }
 
     if (status === 'loading') {
-      // render Loading
+      return (
+        <Loading />
+      );
     }
 
     return (
