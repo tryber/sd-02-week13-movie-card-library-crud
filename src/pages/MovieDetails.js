@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -11,7 +12,7 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     movieAPI.getMovie(this.props.match.params.id)
-    .then((data) => this.setState({ movie: data, loading: false }))
+    .then((data) => this.setState({ movie: data, loading: false }));
   }
 
   render() {
@@ -22,8 +23,8 @@ class MovieDetails extends Component {
       );
     }
 
-    const { movie } = this.state.movie;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
       <div className="row">
@@ -40,6 +41,7 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
+              <Link to={`/movies/${id}/edit`}>EDITAR</Link>
             </div>
           </div>
         </div>
