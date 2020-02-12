@@ -30,17 +30,28 @@ class MovieDetails extends Component {
     movieAPI.deleteMovie(id);
   }
 
-  render() {
+  renderLinks() {
     const { id } = this.state;
+    return (
+      <div className="card-action">
+        <Link to={`/movies/${id}/edit`}>
+          EDITAR
+        </Link>
+        <Link to="/">
+          VOLTAR
+        </Link>
+        <Link to="/" onClick={this.delete}>
+          DELETAR
+        </Link>
+      </div>
+    );
+  }
+
+  render() {
     const { movie = {} } = this.state;
 
     const {
-      title = '',
-      subtitle = '',
-      imagePath = '',
-      storyline = '',
-      genre = '',
-      rating = 0,
+      title = '', subtitle = '', imagePath = '', storyline = '', genre = '', rating = 0,
     } = movie;
 
     if (typeof movie.title === 'undefined') return <Loading />;
@@ -58,17 +69,7 @@ class MovieDetails extends Component {
               <p>{`Genre: ${genre}`}</p>
               <p>{`Rating: ${rating}`}</p>
             </div>
-            <div className="card-action">
-              <Link to={`/movies/${id}/edit`}>
-                EDITAR
-              </Link>
-              <Link to="/">
-                VOLTAR
-              </Link>
-              <Link to="/" onClick={this.delete}>
-                DELETAR
-              </Link>
-            </div>
+            {this.renderLinks()}
           </div>
         </div>
       </div>
