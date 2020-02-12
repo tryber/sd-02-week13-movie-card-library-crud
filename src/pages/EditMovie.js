@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
+
 
 class EditMovie extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id)
       .then((data) => this.setState({
         movie: data,
@@ -46,3 +47,13 @@ class EditMovie extends Component {
 }
 
 export default EditMovie;
+EditMovie.propTypes = PropTypes.shape({
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
+}).isRequired;
