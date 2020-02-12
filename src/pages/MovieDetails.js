@@ -9,12 +9,18 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = { movie: [], loading: true };
+    this.delete = this.delete.bind(this);
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id)
       .then((response) => this.setState({ movie: response, loading: false }));
+  }
+
+  delete() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -40,6 +46,7 @@ class MovieDetails extends Component {
             <div className="card-action">
               <Link to={`/movies/${id}/edit`}>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
+              <Link to="/" onClick={this.delete}>APAGAR CARTÂO</Link>
             </div>
           </div>
         </div>
