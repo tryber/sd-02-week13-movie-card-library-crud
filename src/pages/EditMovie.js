@@ -30,7 +30,6 @@ class EditMovie extends Component {
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
-    console.log(this.props)
     const { history } = this.props;
     if (shouldRedirect) {
       history.push('/');
