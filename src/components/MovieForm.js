@@ -178,5 +178,7 @@ MovieForm.propTypes = PropTypes.shape({
     title: PropTypes.string,
     storyline: PropTypes.string,
     imagePath: PropTypes.string,
+    genre: PropTypes.string,
+    rating: PropTypes.number,
   }),
 }).isRequired;
