@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
@@ -22,3 +22,8 @@ class NewMovie extends Component {
   }
 }
 export default NewMovie;
+NewMovie.propTypes = PropTypes.shape({
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+}).isRequired;
