@@ -12,7 +12,7 @@ class MovieList extends Component {
 
   componentDidMount() {
     movieAPI.getMovies()
-      .then(data => this.setState({ movies: data, loading: false }))
+      .then((data) => this.setState({ movies: data, loading: false }));
   }
 
   render() {
@@ -20,7 +20,9 @@ class MovieList extends Component {
 
     // Render Loading here if the request is still happening
     if (this.state.loading) {
-      return <Loading />
+      return (
+        <Loading />
+      );
     }
 
     return (
