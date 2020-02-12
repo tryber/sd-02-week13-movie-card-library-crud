@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
@@ -23,7 +22,7 @@ class MovieList extends Component {
 
 
   render() {
-    const { movies, Loading } = this.state;
+    const { movies, loading } = this.state;
     // Render Loading here if the request is still happening
     if loading return <Loading />
 
