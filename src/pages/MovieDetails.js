@@ -37,7 +37,7 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={`/${id}/edit`}>VER DETALHES</Link>
+              <Link to={`/${id}/edit`}>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
             </div>
           </div>
