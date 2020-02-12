@@ -12,6 +12,7 @@ class MovieDetails extends Component {
       movie: '',
       isLoading: true,
     };
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +22,15 @@ class MovieDetails extends Component {
         movie: data,
         isLoading: false,
       }));
+  }
+
+  componentWillUnmount() {
+  }
+
+  deleteMovie() {
+    const { movie } = this.state;
+    console.log('oi');
+    movieAPI.deleteMovie(movie.id);
   }
 
   render() {
@@ -47,6 +57,7 @@ class MovieDetails extends Component {
             <div className="card-action">
               <Link to={`/movies/${id}/edit`}> EDITAR </Link>
               <Link to="/"> VOLTAR </Link>
+              <Link to="/" onClick={this.deleteMovie}> DELETAR </Link>
             </div>
           </div>
         </div>
@@ -57,9 +68,9 @@ class MovieDetails extends Component {
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({
-    params: {
+    params: PropTypes.shape({
       id: PropTypes.number,
-    },
+    }),
   }).isRequired,
 };
 
