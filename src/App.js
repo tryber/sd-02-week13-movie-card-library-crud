@@ -4,6 +4,7 @@ import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
 import EditMovie from './pages/EditMovie';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
@@ -12,10 +13,10 @@ function App() {
       <div>Movie Card Library CRUD</div>
       <Switch>
         <Route exact path="/" component={MovieList} />
-        <Route exact path="/movies/:id" component={MovieDetails} />
         <Route path="/movies/new" component={NewMovie} />
+        <Route exact path="/movies/:id" component={MovieDetails} />
         <Route path="/movies/:id/edit" component={EditMovie} />
-        <Route render={() => <h2>Not Found</h2>} />
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   );

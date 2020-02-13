@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
-
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -25,9 +25,15 @@ class MovieList extends Component {
     if (!movies) return <Loading />;
 
     return (
-      <div className="movie-list">
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-      </div>
+      // eslint-disable-next-line react/jsx-fragments
+      <Fragment>
+        <div className="movie-list">
+          {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        </div>
+        <div style={{ paddingBottom: '3rem', textAlign: 'center' }}>
+          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        </div>
+      </Fragment>
     );
   }
 }
