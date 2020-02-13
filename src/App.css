@@ -10,11 +10,10 @@ body {
 }
 
 .addCardButton {
-  font-size: 30px;
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: center;
   border: 5px double black;
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
 }
 
 .movie-card {
