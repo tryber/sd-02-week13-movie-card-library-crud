@@ -49,7 +49,7 @@ class EditMovie extends Component {
 
 EditMovie.propTypes = {
   match: PropTypes.shape({
-    params: { id: PropTypes.number },
+    params: PropTypes.shape({ id: PropTypes.number }),
   }).isRequired,
 };
 
