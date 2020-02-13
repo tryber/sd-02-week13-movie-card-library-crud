@@ -10,16 +10,18 @@ class MovieDetails extends Component {
     this.state = { movie: '' };
   }
 
-  componentDidMount() {  
+  componentDidMount() {
     movieAPI.getMovie(this.props.match.params.id)
-      .then((movie) => this.setState({ movie }));     
+      .then((movie) => this.setState({ movie }));
   }
 
   render() {
     const { movie } = this.state;
     if (!movie) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie
+    const {
+      title, storyline, imagePath, genre, rating, subtitle, id,
+    } = movie;
     return (
       <div className="row">
         <div className="col s12 m7">
@@ -47,8 +49,7 @@ class MovieDetails extends Component {
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.number }),
+    params: PropTypes.shape({ id: PropTypes.number }),
   }).isRequired,
 };
 

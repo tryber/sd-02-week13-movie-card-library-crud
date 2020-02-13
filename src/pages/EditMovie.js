@@ -21,8 +21,7 @@ class EditMovie extends Component {
         status: '',
         shouldRedirect: '',
         movie,
-      })
-      )
+      }));
   }
 
   componentDidUpdate() {
