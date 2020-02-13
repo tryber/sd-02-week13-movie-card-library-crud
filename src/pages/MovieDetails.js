@@ -15,7 +15,6 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const { match } = this.props;
-    console.log(this.props);
     movieAPI.getMovie(match.params.id)
       .then((data) => this.setState({
         movie: data,
@@ -24,7 +23,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
     const { movie } = this.state;
     const { loading } = this.state;
     if (loading) return <Loading />;
@@ -54,7 +52,7 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to={`/movies/{${id}}/edit`}>EDITAR</Link>
+              <Link to={`/movies/${id}/edit`}>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
             </div>
           </div>
