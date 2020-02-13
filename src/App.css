@@ -9,6 +9,14 @@ body {
   padding: 48px 30px;
 }
 
+.addCardButton {
+  font-size: 30px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  border: 5px double black;
+}
+
 .movie-card {
   width: 500px;
 }
