@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
@@ -9,11 +9,16 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = { movie: '', loading: true };
+    this.delete = this.delete.bind(this);
   }
 
   componentDidMount() {
     movieAPI.getMovie(this.props.match.params.id)
     .then((data) => this.setState({ movie: data, loading: false }));
+  }
+
+  delete() {
+    movieAPI.deleteMovie(this.state.movie.id)
   }
 
   render() {
@@ -44,6 +49,7 @@ class MovieDetails extends Component {
             <div className="card-action">
               <Link to={`/movies/${id}/edit`}>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
+              <Link to="/" onClick={this.delete}>APAGAR</Link>
             </div>
           </div>
         </div>
