@@ -19,7 +19,7 @@ class MovieDetails extends Component {
     const { movie } = this.state;
     if (!movie) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie
     return (
       <div className="row">
         <div className="col s12 m7">
@@ -35,7 +35,7 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
-              <Link to="/movies/:id/edit">EDITAR</Link>
+              <Link to={`/movies/${id}/edit`}>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
             </div>
           </div>
