@@ -11,6 +11,8 @@ class MovieDetails extends Component {
     this.state = {
       movie: '',
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +20,11 @@ class MovieDetails extends Component {
     const movieId = match.params.id;
     movieAPI.getMovie(movieId)
       .then((movie) => this.setState({ movie }));
+  }
+
+  handleClick() {
+    const { movie } = this.state;
+    movieAPI.deleteMovie(movie.id);
   }
 
   render() {
@@ -44,6 +51,7 @@ class MovieDetails extends Component {
             <div className="card-action">
               <Link to={`/movies/${id}/edit`}>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
+              <Link to="/" onClick={this.handleClick}>DELETAR</Link>
             </div>
           </div>
         </div>

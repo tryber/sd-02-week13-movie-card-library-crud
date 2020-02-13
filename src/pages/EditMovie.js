@@ -43,6 +43,11 @@ class EditMovie extends Component {
   }
 }
 
+// EditMovie.defaultProps = {
+//   match: PropTypes.shape({ ….
+//   };
+//   EditMovie.defaultProps = { match: {} };
+
 EditMovie.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
