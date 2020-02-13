@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
@@ -15,7 +16,8 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const movieId = this.props.match.params.id;
+    const { match } = this.props;
+    const movieId = match.params.id;
     movieAPI.getMovie(movieId)
       .then((movie) => this.setState({ movie, status: 'loaded' }));
   }
@@ -40,5 +42,13 @@ class EditMovie extends Component {
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 
 export default EditMovie;
