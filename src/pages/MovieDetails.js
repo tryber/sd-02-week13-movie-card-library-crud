@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -10,6 +10,7 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
+  
     movieAPI.getMovie(this.props.match.params.id)
       .then((movie) => this.setState({ movie }));     
   }
@@ -34,6 +35,8 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
+              <Link to="/movies/:id/edit">EDITAR</Link>
+              <Link to="/">VOLTAR</Link>
             </div>
           </div>
         </div>
