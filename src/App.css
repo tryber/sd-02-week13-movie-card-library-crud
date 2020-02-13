@@ -9,13 +9,6 @@ body {
   padding: 48px 30px;
 }
 
-.addCardButton {
-  border: 5px double black;
-  display: flex;
-  font-size: 30px;
-  justify-content: center;
-}
-
 .movie-card {
   width: 500px;
 }
