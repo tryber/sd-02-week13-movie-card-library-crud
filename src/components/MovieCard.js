@@ -17,7 +17,7 @@ class MovieCard extends React.Component {
               <p>{storyline}</p>
             </div>
             <div className="card-action">
-              <Link to={`/movies/${id}`}>VER DETALHES</Link>
+              <Link to={`/movies/${id}`}><h1></h1>VER DETALHES</Link>
             </div>
           </div>
         </div>
