@@ -39,3 +39,9 @@ body {
 .card .card-content p {
   margin-bottom: 15px;
 }
+
+.link-add-card {
+  font-size: 30px;
+  margin-bottom: 50px;
+  text-align: center;
+}
