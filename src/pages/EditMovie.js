@@ -15,19 +15,24 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    movieAPI.updateMovie(this.props.match.params.id)
+    movieAPI.getMovie(this.props.match.params.id)
       .then((movie) => this.setState({
         status: '',
         shouldRedirect: '',
         movie,
-      });
+      })
       )
   }
 
+  componentDidUpdate() {
+    return (
+      <Redirect to="/" />
+    );
+  }
+
   handleSubmit(updatedMovie) {
-    this.setState({
-      status: '', shouldRedirect: true, movie: updatedMovie,
-    });
+    movieAPI.updateMovie(updatedMovie);
+    this.setState({ status: '', shouldRedirect: true, movie: updatedMovie });
   }
 
   render() {

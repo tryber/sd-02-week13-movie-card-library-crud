@@ -111,7 +111,7 @@ class MovieForm extends React.Component {
         </select>
       </div>
     );
-  }
+  }d
 
   renderRatingInput() {
     const { rating } = this.state;
