@@ -24,7 +24,9 @@ class MovieDetails extends Component {
 
   handleClick() {
     const { movie } = this.state;
+    // const { history } = this.props;
     movieAPI.deleteMovie(movie.id);
+    // .then(() => history.push('/'));
   }
 
   render() {
@@ -52,6 +54,7 @@ class MovieDetails extends Component {
               <Link to={`/movies/${id}/edit`}>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
               <Link to="/" onClick={this.handleClick}>DELETAR</Link>
+              {/* <button type="button" onClick={this.handleClick}>DELETAR</button> */}
             </div>
           </div>
         </div>
@@ -66,6 +69,7 @@ MovieDetails.propTypes = {
       id: PropTypes.number,
     }),
   }).isRequired,
+  // history: PropTypes.string.isRequired,
 };
 
 export default MovieDetails;
