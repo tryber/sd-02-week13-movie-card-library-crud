@@ -1,14 +1,42 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    if (true) return <Loading />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: '',
+      isShouldRedirect: false,
+    };
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    this.onChangeRedirect = this.onChangeRedirect.bind(this);
+  }
+
+  componentDidMount() {
+    movieAPI.getMovie(this.props.match.params.id)
+      .then((movie) => this.setState({ movie }));
+  }
+
+  onChangeRedirect() {
+    const { id } = this.state.movie;
+    movieAPI.deleteMovie(id);
+    this.setState({
+      isShouldRedirect: true,
+    });
+  }
+
+  render() {
+    const { movie, isShouldRedirect } = this.state;
+    const {
+      title, storyline, imagePath, genre, rating, subtitle, id,
+    } = movie;
+
+    if (isShouldRedirect) return <Redirect to="/" />;
+
+    if (!movie) return <Loading />;
 
     return (
       <div className="row">
@@ -25,6 +53,9 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
+              <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+              <Link to="/">VOLTAR</Link>
+              <button type="button" onClick={this.onChangeRedirect}>APAGAR</button>
             </div>
           </div>
         </div>
@@ -32,5 +63,11 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({ id: PropTypes.number }),
+  }).isRequired,
+};
 
 export default MovieDetails;
