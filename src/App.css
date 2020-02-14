@@ -39,3 +39,8 @@ body {
 .card .card-content p {
   margin-bottom: 15px;
 }
+
+.add-card {
+  margin-bottom: 20px;
+  text-align: center;
+}
