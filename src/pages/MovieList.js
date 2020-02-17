@@ -26,7 +26,7 @@ class MovieList extends Component {
     if (!load) return <Loading />;
     return (
       <div>
-      <div className="movie-list">
+        <div className="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
         <div className="center-align">
