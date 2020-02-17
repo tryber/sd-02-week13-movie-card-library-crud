@@ -16,7 +16,7 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const { match } = this.props
+    const { match } = this.props;
     movieAPI.getMovie(match.params.id).then((mov) => {
       this.setState({
         status: '',
