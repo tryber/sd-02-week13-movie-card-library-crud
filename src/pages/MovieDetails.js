@@ -15,17 +15,17 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const { match } = this.props;
-      movieAPI.getMovie(match.params.id).then((mov) => {
-        this.setState({
-          load: true,
-          movie: mov,
-        });
+    movieAPI.getMovie(match.params.id).then((mov) => {
+      this.setState({
+        load: true,
+        movie: mov,
       });
+    });
   }
 
   render() {
     const { load, movie } = this.state;
-    
+
     if (!load) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
