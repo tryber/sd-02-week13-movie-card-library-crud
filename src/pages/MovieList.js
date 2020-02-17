@@ -27,8 +27,8 @@ class MovieList extends Component {
     return (
       <div>
         <div className="movie-list">
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-      </div>
+          {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        </div>
         <div className="center-align">
           <Link className="waves-effect waves-light btn" to={'/movies/new'}>New Movie</Link>
         </div>
