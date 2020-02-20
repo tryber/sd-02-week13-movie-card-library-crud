@@ -24,12 +24,8 @@ class MovieDetails extends Component {
       }));
   }
 
-  componentWillUnmount() {
-  }
-
   deleteMovie() {
     const { movie } = this.state;
-    console.log('oi');
     movieAPI.deleteMovie(movie.id);
   }
 
@@ -38,7 +34,9 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     if (isLoading) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    const {
+      title, storyline, imagePath, genre, rating, subtitle, id,
+    } = movie;
 
     return (
       <div className="row">
@@ -69,7 +67,7 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
     }),
   }).isRequired,
 };
