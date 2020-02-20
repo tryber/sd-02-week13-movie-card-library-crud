@@ -28,7 +28,7 @@ class MovieList extends Component {
     if (loading) return <Loading />;
     return (
       <div className="add-card">
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        <Link to="/movies/new"><br />ADICIONAR CARTÃO</Link>
         <div className="movie-list">
           {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
         </div>
