@@ -1,15 +1,60 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: props.match.params.id,
+      movie: {},
+    };
+    this.delete = this.delete.bind(this);
+  }
+
+  componentDidMount() {
+    const { id } = this.state;
+
+    movieAPI.getMovie(id).then((movie) => {
+      this.setState({
+        movie,
+      });
+    });
+  }
+
+  delete() {
+    const { id } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
+  renderLinks() {
+    const { id } = this.state;
+    return (
+      <div className="card-action">
+        <Link to={`/movies/${id}/edit`}>
+          EDITAR
+        </Link>
+        <Link to="/">
+          VOLTAR
+        </Link>
+        <Link to="/" onClick={this.delete}>
+          DELETAR
+        </Link>
+      </div>
+    );
+  }
+
   render() {
-    // Change the condition to check the state
-    if (true) return <Loading />;
+    const { movie = {} } = this.state;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const {
+      title = '', subtitle = '', imagePath = '', storyline = '', genre = '', rating = 0,
+    } = movie;
 
+    if (typeof movie.title === 'undefined') return <Loading />;
     return (
       <div className="row">
         <div className="col s12 m7">
@@ -24,13 +69,23 @@ class MovieDetails extends Component {
               <p>{`Genre: ${genre}`}</p>
               <p>{`Rating: ${rating}`}</p>
             </div>
-            <div className="card-action">
-            </div>
+            {this.renderLinks()}
           </div>
         </div>
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string,
+    url: PropTypes.string,
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
