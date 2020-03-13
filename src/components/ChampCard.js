@@ -10,7 +10,7 @@ const ChampCard = ({
   <div className="row">
     <div className="col s12 m7">
       <div className="card movie-card">
-        <Link to={`/movies/${id}`}>
+        <Link data-testid="linkTo" to={`/${id}`}>
           <div className="card-image">
             <img alt={id} className="movie-card-image" src={imagem} />
             <span className="card-title">{`${id} ${title}`}</span>

@@ -10,8 +10,8 @@ function App() {
     <main>
       <BrowserRouter>
         <Switch>
-          <Route path="/movies/:id" component={ChampDetails} />
-          <Route path="/" component={ChampList} />
+          <Route path="/:id" component={ChampDetails} />
+          <Route exact path="/" component={ChampList} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
