@@ -1,22 +1,36 @@
 body {
-  background-color: whitesmoke;
+  background-color: black;
   box-sizing: border-box;
+}
+
+.input_text {
+  color: white;
+}
+
+.whiteDetails {
+  color: white;
 }
 
 .movie-list {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   padding: 48px 30px;
 }
 
 .movie-card {
-  width: 500px;
+  border: 1px white solid;
+  width: 300px;
 }
 
 .movie-form {
   margin: auto;
   margin-top: 20px;
   width: 80%;
+}
+
+.movie-card-image {
+  height: 300px;
 }
 
 .loading {
@@ -30,6 +44,7 @@ body {
 }
 
 .not-found {
+  color: white;
   font-size: 35px;
   font-weight: 700;
   margin-top: 50px;
@@ -38,4 +53,16 @@ body {
 
 .card .card-content p {
   margin-bottom: 15px;
+}
+
+.cardDetails {
+  width: 100%;
+}
+
+.card-action {
+  width: 90%;
+}
+
+.noResult {
+  color: white;
 }
