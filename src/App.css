@@ -7,20 +7,20 @@ body {
   color: white;
 }
 
-.whiteDetails{
+.whiteDetails {
   color: white;
 }
 
 .movie-list {
   display: flex;
   flex-flow: row wrap;
-  padding: 48px 30px;
   justify-content: center;
+  padding: 48px 30px;
 }
 
 .movie-card {
-  width: 300px;
   border: 1px white solid;
+  width: 300px;
 }
 
 .movie-form {
@@ -29,7 +29,7 @@ body {
   width: 80%;
 }
 
-.movie-card-image{
+.movie-card-image {
   height: 300px;
 }
 
@@ -44,6 +44,7 @@ body {
 }
 
 .not-found {
+  color: white;
   font-size: 35px;
   font-weight: 700;
   margin-top: 50px;
@@ -63,9 +64,5 @@ body {
 }
 
 .noResult {
-  color: white;
-}
-
-.not-found {
   color: white;
 }
