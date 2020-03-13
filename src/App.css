@@ -1,22 +1,36 @@
 body {
-  background-color: whitesmoke;
+  background-color: black;
   box-sizing: border-box;
+}
+
+.input_text {
+  color: white;
+}
+
+.whiteDetails{
+  color: white;
 }
 
 .movie-list {
   display: flex;
   flex-flow: row wrap;
   padding: 48px 30px;
+  justify-content: center;
 }
 
 .movie-card {
-  width: 500px;
+  width: 300px;
+  border: 1px white solid;
 }
 
 .movie-form {
   margin: auto;
   margin-top: 20px;
   width: 80%;
+}
+
+.movie-card-image{
+  height: 300px;
 }
 
 .loading {
@@ -38,4 +52,16 @@ body {
 
 .card .card-content p {
   margin-bottom: 15px;
+}
+
+.cardDetails {
+  width: 100%;
+}
+
+.card-action {
+  width: 90%;
+}
+
+.noResult {
+  color: white;
 }
