@@ -9,7 +9,7 @@ class MovieList extends Component {
     super(props);
 
     this.state = {
-      movies: '',
+      movies: [],
     };
   }
 
@@ -22,16 +22,16 @@ class MovieList extends Component {
     const { movies } = this.state;
 
     // Render Loading here if the request is still happening
-    if (!movies) return <Loading />;
+    if (movies.length === 0) return <Loading />;
 
     return (
       // eslint-disable-next-line react/jsx-fragments
       <Fragment>
+        <div className="add-movie glow-on-hover">
+          <Link to="/movies/new">ADICIONAR NOVO FILME</Link>
+        </div>
         <div className="movie-list">
           {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-        </div>
-        <div style={{ paddingBottom: '3rem', textAlign: 'center' }}>
-          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         </div>
       </Fragment>
     );
