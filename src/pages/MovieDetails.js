@@ -1,14 +1,40 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      movie: '',
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    const { match } = this.props;
+    const movieId = match.params.id;
+    movieAPI.getMovie(movieId)
+      .then((movie) => this.setState({ movie }));
+  }
+
+  handleClick() {
+    const { movie } = this.state;
+    // const { history } = this.props;
+    movieAPI.deleteMovie(movie.id);
+    // .then(() => history.push('/'));
+  }
+
   render() {
     // Change the condition to check the state
-    if (true) return <Loading />;
+    const { movie } = this.state;
+    if (!movie) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
       <div className="row">
@@ -25,6 +51,10 @@ class MovieDetails extends Component {
               <p>{`Rating: ${rating}`}</p>
             </div>
             <div className="card-action">
+              <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+              <Link to="/">VOLTAR</Link>
+              <Link to="/" onClick={this.handleClick}>DELETAR</Link>
+              {/* <button type="button" onClick={this.handleClick}>DELETAR</button> */}
             </div>
           </div>
         </div>
@@ -32,5 +62,14 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+  // history: PropTypes.string.isRequired,
+};
 
 export default MovieDetails;
